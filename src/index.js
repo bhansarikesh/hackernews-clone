@@ -36,7 +36,25 @@ const resolvers = {
       return link;
     },
     updateLink: (root, args) => {
-      
+      let linkToBeUpdated = links.filter((link) => link.id === args.id);
+      if (!linkToBeUpdated[0]) {
+        return `Link was not found with the given id: ${args.id}`;
+      } else {
+        const linkIndex = links.findIndex((link) => link.id === args.id);
+        links[linkIndex].url = args.url || links[linkIndex].url;
+        links[linkIndex].description = args.description || links[linkIndex].description;
+        return `Link successfully updated.`;
+      }
+    },
+    deleteLink: (root, args) => {
+      let linkToBeDeleted = links.filter((link) => link.id === args.id);
+      if (!linkToBeDeleted[0]) {
+        return `Link was not found with the given id: ${args.id}`;
+      } else {
+        const linkIndex = links.findIndex((link) => link.id === args.id);
+        links.splice(linkIndex, 1);
+        return `Link successfully deleted.`;
+      }
     }
   }
 };
