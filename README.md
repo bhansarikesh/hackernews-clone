@@ -1,2 +1,2 @@
 # hackernews-clone
-hackernews-clone as a graphql tutorial
+hackernews-clone from graphql tutorial
